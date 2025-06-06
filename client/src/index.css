@@ -1,0 +1,94 @@
+@import url('https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css');
+@import url('https://cdn.jsdelivr.net/gh/devicons/devicon@v2.15.1/devicon.min.css');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+body {
+  font-family: 'Inter', 'Roboto', Arial, sans-serif;
+  background: #0f172a;
+  color-scheme: dark;
+}
+
+/* Global animated gradient background */
+@keyframes site-bg-gradient {
+  0% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
+}
+.animate-site-bg-gradient {
+  animation: site-bg-gradient 16s ease-in-out infinite;
+}
+
+/* Custom glowing drop shadow */
+.drop-shadow-glow {
+  text-shadow: 0 0 8px #22d3ee, 0 0 16px #22d3ee44;
+}
+
+/* Animated gradient background */
+@keyframes gradient {
+  0% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
+}
+.animate-gradient {
+  background-size: 200% 200%;
+  animation: gradient 8s ease-in-out infinite;
+}
+
+/* Slow bounce animation for contact icons */
+@keyframes bounce-slow {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-12px); }
+}
+.animate-bounce-slow {
+  animation: bounce-slow 2.2s infinite;
+}
+
+/* Parallax SVG circles in Home section */
+#home svg {
+  z-index: 0;
+}
+
+/* Tech stack icons: large, white/cyan, no glow/hover */
+#tech i {
+  color: #a5f3fc !important;
+  filter: none !important;
+}
+
+#tech .bg-gray-800 {
+  background: #23272f !important;
+}
+
+/* Subtle scroll indicator */
+#home .scroll-indicator {
+  opacity: 0.7;
+  font-size: 1.1rem;
+  letter-spacing: 0.1em;
+}
+
+/* Blog cards */
+#blog .bg-gray-800 {
+  background: #23272f !important;
+  transition: box-shadow 0.2s, transform 0.2s;
+}
+#blog .bg-gray-800:hover {
+  box-shadow: 0 6px 32px 0 #22d3ee33, 0 1.5px 8px 0 #0008;
+  transform: translateY(-4px) scale(1.03);
+}
+
+/* Resume button */
+.resume-btn, .resume-btn:focus {
+  box-shadow: 0 2px 16px 0 #22d3ee44;
+  outline: none;
+}
+.resume-btn:hover {
+  background: #67e8f9 !important;
+  color: #0f172a !important;
+}
+
+/* Animated stats */
+.animated-stats span {
+  transition: color 0.2s;
+} 
