@@ -155,18 +155,65 @@ function AnimatedBGParallax() {
 
 function Navbar() {
   const [scrolled, setScrolled] = useState(false);
+  const [activeSection, setActiveSection] = useState('home');
+  const [isMenuOpen, setIsMenuOpen] = useState(false);
+
   useEffect(() => {
-    const onScroll = () => setScrolled(window.scrollY > 40);
+    const onScroll = () => {
+      setScrolled(window.scrollY > 40);
+      
+      // Get all sections
+      const sections = ['home', 'about', 'tech', 'projects', 'publications', 'blog', 'contact'];
+      
+      // Find the current section
+      const current = sections.find(section => {
+        const element = document.getElementById(section);
+        if (element) {
+          const rect = element.getBoundingClientRect();
+          return rect.top <= 100 && rect.bottom >= 100;
+        }
+        return false;
+      });
+      
+      if (current) {
+        setActiveSection(current);
+      }
+    };
+
     window.addEventListener('scroll', onScroll);
     return () => window.removeEventListener('scroll', onScroll);
   }, []);
+
+  // Close menu when clicking outside
+  useEffect(() => {
+    const handleClickOutside = (event) => {
+      if (isMenuOpen && !event.target.closest('nav')) {
+        setIsMenuOpen(false);
+      }
+    };
+
+    document.addEventListener('mousedown', handleClickOutside);
+    return () => document.removeEventListener('mousedown', handleClickOutside);
+  }, [isMenuOpen]);
+
   const navLinks = [
     { label: 'Home', to: '#home' },
     { label: 'About', to: '#about' },
     { label: 'Tech', to: '#tech' },
     { label: 'Projects', to: '#projects' },
+    { label: 'Publications', to: '#publications' },
+    { label: 'Blog', to: '#blog' },
     { label: 'Contact', to: '#contact' },
   ];
+
+  const handleNavClick = (to) => {
+    setIsMenuOpen(false);
+    const element = document.querySelector(to);
+    if (element) {
+      element.scrollIntoView({ behavior: 'smooth' });
+    }
+  };
+
   return (
     <nav className={`fixed top-0 left-0 w-full z-50 transition-all duration-300 ${
       scrolled 
@@ -175,17 +222,67 @@ function Navbar() {
     }`}>
       <div className="max-w-7xl mx-auto flex items-center justify-between px-6 py-4">
         <span className="text-cyan-300 font-bold text-xl tracking-widest">Aditya Mishra</span>
-        <div className="flex gap-8">
-          {navLinks.map((link) => (
-            <a
-              key={link.to}
-              href={link.to}
-              className="text-gray-200 hover:text-cyan-400 font-medium transition-colors duration-200 relative group"
-            >
-              {link.label}
-              <span className="absolute -bottom-1 left-0 w-0 h-0.5 bg-cyan-400 transition-all duration-300 group-hover:w-full"></span>
-            </a>
-          ))}
+        
+        {/* Hamburger Menu Button */}
+        <button 
+          onClick={() => setIsMenuOpen(!isMenuOpen)}
+          className="lg:hidden text-gray-200 hover:text-cyan-400 transition-colors duration-200"
+          aria-label="Toggle menu"
+        >
+          <div className="w-6 h-6 flex flex-col justify-center items-center gap-1.5">
+            <span className={`block w-6 h-0.5 bg-current transition-all duration-300 ${isMenuOpen ? 'rotate-45 translate-y-2' : ''}`} />
+            <span className={`block w-6 h-0.5 bg-current transition-all duration-300 ${isMenuOpen ? 'opacity-0' : ''}`} />
+            <span className={`block w-6 h-0.5 bg-current transition-all duration-300 ${isMenuOpen ? '-rotate-45 -translate-y-2' : ''}`} />
+          </div>
+        </button>
+
+        {/* Desktop Navigation */}
+        <div className="hidden lg:flex gap-8">
+          {navLinks.map((link) => {
+            const section = link.to.replace('#', '');
+            const isActive = activeSection === section;
+            return (
+              <a
+                key={link.to}
+                href={link.to}
+                className={`text-gray-200 font-medium transition-colors duration-200 relative group ${
+                  isActive ? 'text-cyan-400' : 'hover:text-cyan-400'
+                }`}
+              >
+                {link.label}
+                <span className={`absolute -bottom-1 left-0 h-0.5 bg-cyan-400 transition-all duration-300 ${
+                  isActive ? 'w-full' : 'w-0 group-hover:w-full'
+                }`}></span>
+              </a>
+            );
+          })}
+        </div>
+
+        {/* Mobile Navigation Menu */}
+        <div className={`lg:hidden fixed top-[72px] left-0 w-full bg-gray-900/95 backdrop-blur-md transition-all duration-300 transform ${
+          isMenuOpen ? 'translate-x-0' : 'translate-x-full'
+        }`}>
+          <div className="flex flex-col items-center py-6 space-y-6">
+            {navLinks.map((link) => {
+              const section = link.to.replace('#', '');
+              const isActive = activeSection === section;
+              return (
+                <a
+                  key={link.to}
+                  href={link.to}
+                  onClick={() => handleNavClick(link.to)}
+                  className={`text-gray-200 font-medium transition-colors duration-200 relative group ${
+                    isActive ? 'text-cyan-400' : 'hover:text-cyan-400'
+                  }`}
+                >
+                  {link.label}
+                  <span className={`absolute -bottom-1 left-0 h-0.5 bg-cyan-400 transition-all duration-300 ${
+                    isActive ? 'w-full' : 'w-0 group-hover:w-full'
+                  }`}></span>
+                </a>
+              );
+            })}
+          </div>
         </div>
       </div>
     </nav>
