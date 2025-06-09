@@ -168,17 +168,22 @@ function Navbar() {
     { label: 'Contact', to: '#contact' },
   ];
   return (
-    <nav className={`fixed top-0 left-0 w-full z-50 transition-all bg-gray-950/90 shadow-lg backdrop-blur border-b border-gray-800`}>
-      <div className="max-w-7xl mx-auto flex items-center justify-between px-6 py-3">
+    <nav className={`fixed top-0 left-0 w-full z-50 transition-all duration-300 ${
+      scrolled 
+        ? 'bg-gray-900/30 backdrop-blur-md shadow-lg border-b border-gray-800/50' 
+        : 'bg-transparent'
+    }`}>
+      <div className="max-w-7xl mx-auto flex items-center justify-between px-6 py-4">
         <span className="text-cyan-300 font-bold text-xl tracking-widest">Aditya Mishra</span>
-        <div className="flex gap-6">
+        <div className="flex gap-8">
           {navLinks.map((link) => (
             <a
               key={link.to}
               href={link.to}
-              className="text-gray-200 hover:text-cyan-400 font-medium transition-colors duration-200"
+              className="text-gray-200 hover:text-cyan-400 font-medium transition-colors duration-200 relative group"
             >
               {link.label}
+              <span className="absolute -bottom-1 left-0 w-0 h-0.5 bg-cyan-400 transition-all duration-300 group-hover:w-full"></span>
             </a>
           ))}
         </div>
@@ -519,7 +524,7 @@ function Contact() {
         <a href="https://github.com/mishra-bytes" target="_blank" rel="noopener noreferrer" className="text-4xl text-cyan-400 hover:text-white transition">
           <i className="fab fa-github"></i>
         </a>
-        <a href="mailto:your.email@example.com" className="text-4xl text-cyan-400 hover:text-white transition">
+        <a href="mailto:aditya_mishra@outlook.in" className="text-4xl text-cyan-400 hover:text-white transition">
           <i className="fas fa-envelope"></i>
         </a>
       </div>
