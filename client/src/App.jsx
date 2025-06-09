@@ -349,21 +349,11 @@ function Projects() {
               <div className="p-7 flex-1 flex flex-col justify-between w-full">
                 <h3 className="text-xl font-semibold text-cyan-200 mb-3 group-hover:text-cyan-400 transition-colors">{proj.title}</h3>
                 <p className="text-gray-300 mb-5 text-sm">{proj.desc}</p>
-                <div className="flex flex-wrap gap-3 justify-center mt-2">
-                  {proj.stack.map((tech) => {
-                    const t = techStack.find((t) => t.name === tech);
-                    return t ? (
-                      <span key={tech} className="inline-flex items-center gap-1 px-3 py-1 bg-gray-900/70 rounded-full text-cyan-200 text-sm font-medium border border-gray-700">
-                        <i className={`${t.icon} text-lg`} aria-label={tech} />
-                        {tech}
-                      </span>
-                    ) : (
-                      <span key={tech} className="inline-flex items-center gap-1 px-3 py-1 bg-gray-900/70 rounded-full text-cyan-200 text-sm font-medium border border-gray-700">
-                        <i className="fa-solid fa-circle-question text-lg" aria-label={tech} />
-                        {tech}
-                      </span>
-                    );
-                  })}
+                <div className="flex flex-wrap gap-2 justify-center mt-2 text-gray-400 text-sm font-medium">
+                  <span className="inline-flex items-center gap-1">
+                    <i className="fa-solid fa-code mr-1" aria-label="Tech Stack" />
+                    {proj.stack.join(', ')}
+                  </span>
                 </div>
               </div>
             </motion.div>
