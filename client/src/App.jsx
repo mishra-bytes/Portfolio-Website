@@ -321,42 +321,45 @@ function Projects() {
       <SectionHeading>Projects</SectionHeading>
       <div className="grid md:grid-cols-3 gap-12">
         {visibleProjects.map((proj, idx) => (
-          <motion.div
+          <Link
             key={proj.slug}
-            whileHover={{ scale: 1.04, y: -6 }}
-            initial={{ opacity: 0, y: 60, scale: 0.98 }}
-            whileInView={{ opacity: 1, y: 0, scale: 1 }}
-            transition={{ duration: 0.8, delay: idx * 0.12, type: 'spring' }}
-            viewport={{ amount: 0.2 }}
-            className="bg-gray-800/80 rounded-2xl p-0 shadow-lg border border-gray-700 transition-all flex flex-col items-center overflow-hidden group cursor-pointer"
-            aria-label={proj.title}
-            onClick={() => window.location.href = `/project/${proj.slug}`}
-            style={{ cursor: 'pointer' }}
+            to={`/project/${proj.slug}`}
+            className="no-underline"
           >
-            <div className="w-full h-44 bg-gray-900 flex items-center justify-center overflow-hidden border-b-2 border-gray-700 relative">
-              <img src={proj.image} alt={proj.title} className="object-cover w-full h-full transition-transform duration-500 group-hover:scale-105" />
-            </div>
-            <div className="p-7 flex-1 flex flex-col justify-between w-full">
-              <h3 className="text-xl font-semibold text-cyan-200 mb-3 group-hover:text-cyan-400 transition-colors">{proj.title}</h3>
-              <p className="text-gray-300 mb-5 text-sm">{proj.desc}</p>
-              <div className="flex flex-wrap gap-3 justify-center mt-2">
-                {proj.stack.map((tech) => {
-                  const t = techStack.find((t) => t.name === tech);
-                  return t ? (
-                    <span key={tech} className="inline-flex items-center gap-1 px-3 py-1 bg-gray-900/70 rounded-full text-cyan-200 text-sm font-medium border border-gray-700">
-                      <i className={`${t.icon} text-lg`} aria-label={tech} />
-                      {tech}
-                    </span>
-                  ) : (
-                    <span key={tech} className="inline-flex items-center gap-1 px-3 py-1 bg-gray-900/70 rounded-full text-cyan-200 text-sm font-medium border border-gray-700">
-                      <i className="fa-solid fa-circle-question text-lg" aria-label={tech} />
-                      {tech}
-                    </span>
-                  );
-                })}
+            <motion.div
+              whileHover={{ scale: 1.04, y: -6 }}
+              initial={{ opacity: 0, y: 60, scale: 0.98 }}
+              whileInView={{ opacity: 1, y: 0, scale: 1 }}
+              transition={{ duration: 0.8, delay: idx * 0.12, type: 'spring' }}
+              viewport={{ amount: 0.2 }}
+              className="bg-gray-800/80 rounded-2xl p-0 shadow-lg border border-gray-700 transition-all flex flex-col items-center overflow-hidden group cursor-pointer"
+              aria-label={proj.title}
+            >
+              <div className="w-full h-44 bg-gray-900 flex items-center justify-center overflow-hidden border-b-2 border-gray-700 relative">
+                <img src={proj.image} alt={proj.title} className="object-cover w-full h-full transition-transform duration-500 group-hover:scale-105" />
               </div>
-            </div>
-          </motion.div>
+              <div className="p-7 flex-1 flex flex-col justify-between w-full">
+                <h3 className="text-xl font-semibold text-cyan-200 mb-3 group-hover:text-cyan-400 transition-colors">{proj.title}</h3>
+                <p className="text-gray-300 mb-5 text-sm">{proj.desc}</p>
+                <div className="flex flex-wrap gap-3 justify-center mt-2">
+                  {proj.stack.map((tech) => {
+                    const t = techStack.find((t) => t.name === tech);
+                    return t ? (
+                      <span key={tech} className="inline-flex items-center gap-1 px-3 py-1 bg-gray-900/70 rounded-full text-cyan-200 text-sm font-medium border border-gray-700">
+                        <i className={`${t.icon} text-lg`} aria-label={tech} />
+                        {tech}
+                      </span>
+                    ) : (
+                      <span key={tech} className="inline-flex items-center gap-1 px-3 py-1 bg-gray-900/70 rounded-full text-cyan-200 text-sm font-medium border border-gray-700">
+                        <i className="fa-solid fa-circle-question text-lg" aria-label={tech} />
+                        {tech}
+                      </span>
+                    );
+                  })}
+                </div>
+              </div>
+            </motion.div>
+          </Link>
         ))}
       </div>
       {projects.length > 6 && (
