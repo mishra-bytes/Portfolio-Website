@@ -346,10 +346,12 @@ function Projects() {
               <div className="w-full h-44 bg-gray-900 flex items-center justify-center overflow-hidden border-b-2 border-gray-700 relative">
                 <img src={proj.image} alt={proj.title} className="object-cover w-full h-full transition-transform duration-500 group-hover:scale-105" />
               </div>
-              <div className="p-7 flex-1 flex flex-col justify-between w-full">
+              <div className="p-7 flex-1 flex flex-col justify-between w-full min-h-[160px]">
                 <h3 className="text-xl font-semibold text-cyan-200 mb-3 group-hover:text-cyan-400 transition-colors">{proj.title}</h3>
-                <p className="text-gray-300 mb-5 text-sm">{proj.desc}</p>
-                <div className="flex flex-wrap gap-2 justify-center mt-2 text-gray-400 text-sm font-medium">
+                <p className="text-gray-300 mb-5 text-sm text-justify line-clamp-3">
+                  {proj.desc}
+                </p>
+                <div className="flex flex-wrap gap-2 justify-start mt-2 text-gray-400 text-sm font-medium">
                   <span className="inline-flex items-center gap-1">
                     <i className="fa-solid fa-code mr-1" aria-label="Tech Stack" />
                     {proj.stack.join(', ')}
