@@ -335,18 +335,18 @@ function Projects() {
             className="no-underline"
           >
             <motion.div
-              whileHover={{ scale: 1.04, y: -6 }}
+              whileHover={{ scale: 1.04, y: -6, boxShadow: '0 0px 30px 0px rgba(0, 255, 255, 0.4)' }}
               initial={{ opacity: 0, y: 60, scale: 0.98 }}
               whileInView={{ opacity: 1, y: 0, scale: 1 }}
               transition={{ duration: 0.8, delay: idx * 0.12, type: 'spring' }}
               viewport={{ amount: 0.2 }}
-              className="bg-gray-800/80 rounded-2xl p-0 shadow-lg border border-gray-700 transition-all flex flex-col items-center overflow-hidden group cursor-pointer"
+              className="bg-gray-800 rounded-2xl p-0 shadow-lg border border-gray-700 transition-all flex flex-col items-center overflow-hidden group cursor-pointer h-[420px]"
               aria-label={proj.title}
             >
               <div className="w-full h-44 bg-gray-900 flex items-center justify-center overflow-hidden border-b-2 border-gray-700 relative">
                 <img src={proj.image} alt={proj.title} className="object-cover w-full h-full transition-transform duration-500 group-hover:scale-105" />
               </div>
-              <div className="p-7 flex-1 flex flex-col justify-between w-full min-h-[160px]">
+              <div className="p-7 flex-1 flex flex-col justify-between w-full overflow-hidden">
                 <h3 className="text-xl font-semibold text-cyan-200 mb-3 group-hover:text-cyan-400 transition-colors">{proj.title}</h3>
                 <p className="text-gray-300 mb-5 text-sm text-justify line-clamp-3">
                   {proj.desc}
