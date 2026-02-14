@@ -70,9 +70,9 @@ export function Navbar() {
 
   return (
     <nav
-      className={`fixed top-0 left-0 w-full z-50 transition-all duration-300 ${
+      className={`fixed top-0 left-0 w-full z-50 transition-all duration-500 ${
         scrolled
-          ? 'bg-gray-900/80 backdrop-blur-md shadow-lg border-b border-gray-800/50'
+          ? 'bg-[rgba(8,12,24,0.75)] backdrop-blur-xl shadow-glass border-b border-white/[0.06]'
           : 'bg-transparent'
       }`}
       role="navigation"
@@ -81,7 +81,7 @@ export function Navbar() {
       <div className="max-w-6xl mx-auto flex items-center justify-between px-6 py-4">
         <Link
           to="/"
-          className="text-cyan-300 font-semibold text-lg tracking-wide hover:text-cyan-200 transition-colors"
+          className="text-gradient font-bold text-lg tracking-wide hover:opacity-80 transition-opacity"
         >
           Aditya Mishra
         </Link>
@@ -128,7 +128,7 @@ export function Navbar() {
               >
                 {link.label}
                 <span
-                  className={`absolute -bottom-1 left-0 h-0.5 bg-cyan-400 transition-all duration-300 ${
+                  className={`absolute -bottom-1 left-0 h-0.5 bg-gradient-to-r from-cyan-400 to-indigo-400 transition-all duration-300 ${
                     isActive ? 'w-full' : 'w-0 group-hover:w-full'
                   }`}
                 />
@@ -139,7 +139,7 @@ export function Navbar() {
 
         {/* Mobile Navigation */}
         <div
-          className={`lg:hidden fixed top-[72px] left-0 w-full bg-gray-900/95 backdrop-blur-md transition-all duration-300 transform ${
+          className={`lg:hidden fixed top-[72px] left-0 w-full bg-[rgba(8,12,24,0.95)] backdrop-blur-xl border-b border-white/[0.06] transition-all duration-300 transform ${
             isMenuOpen ? 'translate-x-0' : 'translate-x-full'
           }`}
         >

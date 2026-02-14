@@ -21,7 +21,7 @@ export function PublicationsCertifications() {
             {publications.map((item, i) => (
               <motion.article
                 key={item.title}
-                className="flex flex-col md:flex-row bg-gray-800/60 rounded-xl border border-gray-700/50 p-6 gap-6"
+                className="flex flex-col md:flex-row glass-card glass-shimmer rounded-2xl p-6 gap-6"
                 initial={{ opacity: 0, y: 20 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.4, delay: i * 0.08 }}
@@ -30,7 +30,7 @@ export function PublicationsCertifications() {
                 <img
                   src={item.img}
                   alt={item.title}
-                  className="w-36 h-36 rounded-lg object-cover border border-gray-700/50 flex-shrink-0"
+                  className="w-36 h-36 rounded-lg object-cover border border-white/[0.06] flex-shrink-0"
                   loading="lazy"
                 />
                 <div className="flex-1 min-w-0">
@@ -66,7 +66,7 @@ export function PublicationsCertifications() {
               .map((item, i) => (
                 <motion.article
                   key={item.title}
-                  className="flex flex-col sm:flex-row bg-gray-800/60 rounded-xl border border-gray-700/50 p-5 gap-5 items-start"
+                  className="flex flex-col sm:flex-row glass-card glass-shimmer rounded-2xl p-5 gap-5 items-start"
                   initial={{ opacity: 0, y: 20 }}
                   whileInView={{ opacity: 1, y: 0 }}
                   transition={{ duration: 0.4, delay: i * 0.08 }}
@@ -75,7 +75,7 @@ export function PublicationsCertifications() {
                   <img
                     src={item.img}
                     alt={item.title}
-                    className="w-20 h-20 rounded-lg object-cover border border-gray-700/50 flex-shrink-0"
+                    className="w-20 h-20 rounded-lg object-cover border border-white/[0.06] flex-shrink-0"
                     loading="lazy"
                   />
                   <div className="flex-1 min-w-0">
@@ -102,7 +102,7 @@ export function PublicationsCertifications() {
             <div className="flex justify-end mt-4">
               <button
                 onClick={() => setShowAllCerts((v) => !v)}
-                className="px-4 py-2 text-sm font-medium text-cyan-400 border border-cyan-400/30 rounded-lg hover:bg-cyan-500/10 transition-colors"
+                className="btn-ghost"
               >
                 {showAllCerts ? 'Show Less' : 'View All'}
               </button>

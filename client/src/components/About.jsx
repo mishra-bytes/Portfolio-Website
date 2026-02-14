@@ -7,17 +7,19 @@ export function About() {
   return (
     <SectionWrapper id="about" className="py-24 px-4 lg:px-24 w-full max-w-5xl mx-auto">
       <SectionHeading>About</SectionHeading>
-      <div className="max-w-3xl space-y-4">
-        {profile.about.map((paragraph, i) => (
-          <p
-            key={i}
-            className={`text-base leading-relaxed ${
-              i === 0 ? 'text-gray-200' : 'text-gray-400'
-            }`}
-          >
-            {paragraph}
-          </p>
-        ))}
+      <div className="glass-card rounded-2xl p-8 max-w-3xl">
+        <div className="space-y-4">
+          {profile.about.map((paragraph, i) => (
+            <p
+              key={i}
+              className={`text-base leading-relaxed ${
+                i === 0 ? 'text-gray-200' : 'text-gray-400'
+              }`}
+            >
+              {paragraph}
+            </p>
+          ))}
+        </div>
       </div>
     </SectionWrapper>
   );

@@ -11,15 +11,25 @@ import { BlogSection } from './components/BlogSection';
 import { Contact } from './components/Contact';
 import { Footer } from './components/Footer';
 
+function SectionDivider() {
+  return <div className="section-divider max-w-5xl mx-auto" aria-hidden="true" />;
+}
+
 function MainPage() {
   return (
     <>
       <Home />
+      <SectionDivider />
       <About />
+      <SectionDivider />
       <TechStack />
+      <SectionDivider />
       <Projects />
+      <SectionDivider />
       <PublicationsCertifications />
+      <SectionDivider />
       <BlogSection />
+      <SectionDivider />
       <Contact />
       <Footer />
     </>
@@ -29,8 +39,13 @@ function MainPage() {
 function App() {
   return (
     <Router>
+      {/* Layered depth background */}
+      <div className="bg-depth" aria-hidden="true" />
+      <div className="bg-orb bg-orb-1" aria-hidden="true" />
+      <div className="bg-orb bg-orb-2" aria-hidden="true" />
+
       <Navbar />
-      <main className="pt-20">
+      <main className="pt-20 relative">
         <Routes>
           <Route path="/" element={<MainPage />} />
           <Route path="/project/:slug" element={<ProjectDetails />} />

@@ -18,15 +18,16 @@ export function Projects() {
             <motion.article
               initial={{ opacity: 0, y: 24 }}
               whileInView={{ opacity: 1, y: 0 }}
+              whileHover={{ y: -4 }}
               transition={{ duration: 0.4, delay: idx * 0.06 }}
               viewport={{ once: true, amount: 0.15 }}
-              className="bg-gray-800/60 rounded-xl border border-gray-700/50 overflow-hidden hover:border-cyan-400/30 transition-colors duration-200 h-full flex flex-col"
+              className="glass-card glass-shimmer rounded-2xl overflow-hidden h-full flex flex-col"
             >
-              <div className="w-full h-40 bg-gray-900 overflow-hidden">
+              <div className="w-full h-40 bg-dark-50 overflow-hidden">
                 <img
                   src={proj.image}
                   alt={proj.title}
-                  className="object-cover w-full h-full transition-transform duration-300 group-hover:scale-105"
+                  className="object-cover w-full h-full transition-transform duration-500 group-hover:scale-105"
                   loading="lazy"
                 />
               </div>
@@ -41,7 +42,7 @@ export function Projects() {
                   {proj.stack.map((tech) => (
                     <span
                       key={tech}
-                      className="text-xs px-2 py-0.5 rounded bg-gray-700/50 text-gray-300 border border-gray-600/30"
+                      className="chip"
                     >
                       {tech}
                     </span>
@@ -56,7 +57,7 @@ export function Projects() {
         <div className="flex justify-end mt-6">
           <button
             onClick={() => setShowAll((v) => !v)}
-            className="px-4 py-2 text-sm font-medium text-cyan-400 border border-cyan-400/30 rounded-lg hover:bg-cyan-500/10 transition-colors"
+            className="btn-ghost"
           >
             {showAll ? 'Show Less' : 'View All Projects'}
           </button>

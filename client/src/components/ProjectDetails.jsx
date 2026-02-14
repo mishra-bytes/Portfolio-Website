@@ -48,9 +48,9 @@ export function ProjectDetails() {
       {/* Back navigation */}
       <button
         onClick={() => navigate(-1)}
-        className="mb-8 text-sm text-gray-400 hover:text-cyan-400 flex items-center gap-2 transition-colors"
+        className="mb-8 text-sm text-gray-400 hover:text-cyan-400 flex items-center gap-2 transition-all duration-300 group"
       >
-        <i className="fa-solid fa-arrow-left" aria-hidden="true" />
+        <i className="fa-solid fa-arrow-left transition-transform duration-300 group-hover:-translate-x-1" aria-hidden="true" />
         Back to Projects
       </button>
 
@@ -69,7 +69,7 @@ export function ProjectDetails() {
           {project.stack.map((tech) => (
             <span
               key={tech}
-              className="text-xs px-2.5 py-1 rounded bg-gray-800 text-gray-300 border border-gray-700/50"
+              className="chip"
             >
               {tech}
             </span>
@@ -98,7 +98,7 @@ export function ProjectDetails() {
         <img
           src={project.image}
           alt={project.title}
-          className="w-full rounded-xl border border-gray-700/50"
+          className="w-full rounded-2xl border border-white/[0.06] shadow-glass"
           loading="lazy"
         />
       </motion.div>
@@ -143,7 +143,7 @@ export function ProjectDetails() {
             {project.results.map((res, i) => (
               <div
                 key={i}
-                className="bg-gray-800/60 rounded-lg border border-gray-700/50 p-4 cursor-pointer group"
+                className="glass-card glass-shimmer rounded-xl p-4 cursor-pointer group"
                 onClick={() => setModalImg(res.img)}
                 role="button"
                 tabIndex={0}
@@ -166,7 +166,7 @@ export function ProjectDetails() {
       {/* Image modal */}
       {modalImg && (
         <div
-          className="fixed inset-0 z-50 flex items-center justify-center bg-black/80 backdrop-blur-sm"
+          className="fixed inset-0 z-50 flex items-center justify-center bg-black/80 backdrop-blur-md"
           onClick={() => setModalImg(null)}
           onKeyDown={(e) => e.key === 'Escape' && setModalImg(null)}
           role="dialog"
@@ -175,7 +175,7 @@ export function ProjectDetails() {
           <img
             src={modalImg}
             alt="Full screen view"
-            className="max-w-3xl max-h-[90vh] rounded-xl shadow-2xl border border-gray-700"
+            className="max-w-3xl max-h-[90vh] rounded-2xl shadow-2xl border border-white/[0.06]"
           />
         </div>
       )}

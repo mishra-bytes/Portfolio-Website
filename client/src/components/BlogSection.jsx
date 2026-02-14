@@ -20,7 +20,7 @@ export function BlogSection() {
             href={blog.link}
             target={blog.link !== '#' ? '_blank' : undefined}
             rel={blog.link !== '#' ? 'noopener noreferrer' : undefined}
-            className="block bg-gray-800/60 rounded-xl border border-gray-700/50 p-5 hover:border-cyan-400/30 transition-colors duration-200 group"
+            className="block glass-card glass-shimmer rounded-2xl p-5 group"
             initial={{ opacity: 0, y: 16 }}
             whileInView={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.4, delay: i * 0.06 }}
@@ -40,7 +40,7 @@ export function BlogSection() {
         <div className="flex justify-end mt-4">
           <button
             onClick={() => setShowAll((v) => !v)}
-            className="px-4 py-2 text-sm font-medium text-cyan-400 border border-cyan-400/30 rounded-lg hover:bg-cyan-500/10 transition-colors"
+            className="btn-ghost"
           >
             {showAll ? 'Show Less' : 'View All'}
           </button>
