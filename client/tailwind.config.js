@@ -10,42 +10,33 @@ module.exports = {
         mono: ['JetBrains Mono', 'Fira Code', 'monospace'],
       },
       colors: {
-        dark: {
-          DEFAULT: '#080c18',
-          50: '#0d1326',
-          100: '#101827',
-          200: '#141c2f',
-          300: '#1a2238',
-          400: '#1e2a42',
+        surface: {
+          DEFAULT: '#111111',
+          raised: '#191919',
+          overlay: '#1e1e1e',
+          border: '#2a2a2a',
+        },
+        accent: {
+          DEFAULT: '#a0a0a0',
+          muted: '#666666',
+          subtle: '#3a3a3a',
         },
       },
-      animation: {
-        'gradient-shift': 'gradient-shift 4s ease infinite',
-        'glow-pulse': 'glow-pulse 3s ease-in-out infinite',
-        'float': 'float 20s ease-in-out infinite',
-        'float-delayed': 'float 20s ease-in-out -7s infinite',
+      spacing: {
+        '18': '4.5rem',
+        '22': '5.5rem',
+        '30': '7.5rem',
+        '34': '8.5rem',
       },
-      keyframes: {
-        'gradient-shift': {
-          '0%, 100%': { backgroundPosition: '0% 50%' },
-          '50%': { backgroundPosition: '100% 50%' },
-        },
-        'glow-pulse': {
-          '0%, 100%': { opacity: '0.4' },
-          '50%': { opacity: '0.7' },
-        },
-        'float': {
-          '0%, 100%': { transform: 'translateY(0) translateX(0)' },
-          '33%': { transform: 'translateY(-20px) translateX(10px)' },
-          '66%': { transform: 'translateY(10px) translateX(-10px)' },
-        },
-      },
-      boxShadow: {
-        'glow-sm': '0 0 15px -3px rgba(34, 211, 238, 0.15)',
-        'glow': '0 0 25px -5px rgba(34, 211, 238, 0.2)',
-        'glow-lg': '0 0 40px -5px rgba(34, 211, 238, 0.25)',
-        'glow-violet': '0 0 25px -5px rgba(129, 140, 248, 0.2)',
-        'glass': '0 8px 32px 0 rgba(0, 0, 0, 0.36)',
+      fontSize: {
+        'display': ['3.5rem', { lineHeight: '1.1', letterSpacing: '-0.02em', fontWeight: '600' }],
+        'display-sm': ['2.5rem', { lineHeight: '1.15', letterSpacing: '-0.02em', fontWeight: '600' }],
+        'heading': ['1.5rem', { lineHeight: '1.3', letterSpacing: '-0.01em', fontWeight: '600' }],
+        'heading-sm': ['1.25rem', { lineHeight: '1.35', letterSpacing: '-0.01em', fontWeight: '600' }],
+        'body': ['1rem', { lineHeight: '1.7', fontWeight: '400' }],
+        'body-sm': ['0.875rem', { lineHeight: '1.65', fontWeight: '400' }],
+        'caption': ['0.8125rem', { lineHeight: '1.5', fontWeight: '400' }],
+        'micro': ['0.75rem', { lineHeight: '1.5', fontWeight: '500' }],
       },
     },
   },

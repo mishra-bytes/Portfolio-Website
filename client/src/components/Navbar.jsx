@@ -70,18 +70,18 @@ export function Navbar() {
 
   return (
     <nav
-      className={`fixed top-0 left-0 w-full z-50 transition-all duration-500 ${
+      className={`fixed top-0 left-0 w-full z-50 transition-all duration-300 ${
         scrolled
-          ? 'bg-[rgba(8,12,24,0.75)] backdrop-blur-xl shadow-glass border-b border-white/[0.06]'
+          ? 'bg-[#111111]/90 backdrop-blur-md border-b border-surface-border'
           : 'bg-transparent'
       }`}
       role="navigation"
       aria-label="Main navigation"
     >
-      <div className="max-w-6xl mx-auto flex items-center justify-between px-6 py-4">
+      <div className="max-w-5xl mx-auto flex items-center justify-between px-6 py-4">
         <Link
           to="/"
-          className="text-gradient font-bold text-lg tracking-wide hover:opacity-80 transition-opacity"
+          className="text-white font-semibold text-sm tracking-wide hover:opacity-70 transition-opacity"
         >
           Aditya Mishra
         </Link>
@@ -89,31 +89,26 @@ export function Navbar() {
         {/* Hamburger */}
         <button
           onClick={() => setIsMenuOpen(!isMenuOpen)}
-          className="lg:hidden text-gray-200 hover:text-cyan-400 transition-colors duration-200"
+          className="lg:hidden text-neutral-400 hover:text-white transition-colors duration-200"
           aria-label="Toggle menu"
           aria-expanded={isMenuOpen}
         >
           <div className="w-6 h-6 flex flex-col justify-center items-center gap-1.5">
             <span
-              className={`block w-6 h-0.5 bg-current transition-all duration-300 ${
-                isMenuOpen ? 'rotate-45 translate-y-2' : ''
+              className={`block w-5 h-px bg-current transition-all duration-300 ${
+                isMenuOpen ? 'rotate-45 translate-y-[3.5px]' : ''
               }`}
             />
             <span
-              className={`block w-6 h-0.5 bg-current transition-all duration-300 ${
-                isMenuOpen ? 'opacity-0' : ''
-              }`}
-            />
-            <span
-              className={`block w-6 h-0.5 bg-current transition-all duration-300 ${
-                isMenuOpen ? '-rotate-45 -translate-y-2' : ''
+              className={`block w-5 h-px bg-current transition-all duration-300 ${
+                isMenuOpen ? '-rotate-45 -translate-y-[3.5px]' : ''
               }`}
             />
           </div>
         </button>
 
         {/* Desktop Navigation */}
-        <div className="hidden lg:flex gap-7">
+        <div className="hidden lg:flex gap-8">
           {navLinks.map((link) => {
             const section = link.to.replace('#', '');
             const isActive = isHome && activeSection === section;
@@ -122,16 +117,11 @@ export function Navbar() {
                 key={link.to}
                 href={link.to}
                 onClick={(e) => handleNavClick(e, link.to)}
-                className={`text-sm font-medium transition-colors duration-200 relative group ${
-                  isActive ? 'text-cyan-400' : 'text-gray-300 hover:text-cyan-400'
+                className={`text-caption font-medium transition-colors duration-200 ${
+                  isActive ? 'text-white' : 'text-neutral-500 hover:text-neutral-300'
                 }`}
               >
                 {link.label}
-                <span
-                  className={`absolute -bottom-1 left-0 h-0.5 bg-gradient-to-r from-cyan-400 to-indigo-400 transition-all duration-300 ${
-                    isActive ? 'w-full' : 'w-0 group-hover:w-full'
-                  }`}
-                />
               </a>
             );
           })}
@@ -139,11 +129,11 @@ export function Navbar() {
 
         {/* Mobile Navigation */}
         <div
-          className={`lg:hidden fixed top-[72px] left-0 w-full bg-[rgba(8,12,24,0.95)] backdrop-blur-xl border-b border-white/[0.06] transition-all duration-300 transform ${
-            isMenuOpen ? 'translate-x-0' : 'translate-x-full'
+          className={`lg:hidden fixed top-[64px] left-0 w-full bg-[#111111]/95 backdrop-blur-lg border-b border-surface-border transition-all duration-300 transform ${
+            isMenuOpen ? 'translate-x-0 opacity-100' : 'translate-x-full opacity-0'
           }`}
         >
-          <div className="flex flex-col items-center py-6 space-y-6">
+          <div className="flex flex-col items-center py-8 space-y-5">
             {navLinks.map((link) => {
               const section = link.to.replace('#', '');
               const isActive = isHome && activeSection === section;
@@ -152,8 +142,8 @@ export function Navbar() {
                   key={link.to}
                   href={link.to}
                   onClick={(e) => handleNavClick(e, link.to)}
-                  className={`text-sm font-medium transition-colors duration-200 ${
-                    isActive ? 'text-cyan-400' : 'text-gray-300 hover:text-cyan-400'
+                  className={`text-body-sm font-medium transition-colors duration-200 ${
+                    isActive ? 'text-white' : 'text-neutral-500 hover:text-neutral-300'
                   }`}
                 >
                   {link.label}

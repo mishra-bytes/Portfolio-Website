@@ -7,9 +7,9 @@ import { SubHeading } from './ui/SectionHeading';
 function CaseStudySection({ title, content }) {
   if (!content) return null;
   return (
-    <div className="mb-8">
+    <div className="mb-10">
       <SubHeading>{title}</SubHeading>
-      <p className="text-gray-300 leading-relaxed whitespace-pre-line">{content}</p>
+      <p className="text-body text-neutral-400 leading-relaxed whitespace-pre-line">{content}</p>
     </div>
   );
 }
@@ -22,9 +22,9 @@ export function ProjectDetails() {
 
   if (!project) {
     return (
-      <div className="text-center py-32 text-xl text-gray-400">
+      <div className="text-center py-32 text-body text-neutral-500">
         Project not found.{' '}
-        <button onClick={() => navigate('/')} className="text-cyan-400 hover:underline">
+        <button onClick={() => navigate('/')} className="text-white hover:underline">
           Go back
         </button>
       </div>
@@ -44,33 +44,30 @@ export function ProjectDetails() {
   const hasCaseStudy = caseStudySections.some((s) => s.content);
 
   return (
-    <div className="py-24 px-4 lg:px-24 w-full max-w-4xl mx-auto">
+    <div className="py-22 px-6 lg:px-24 w-full max-w-3xl mx-auto">
       {/* Back navigation */}
       <button
         onClick={() => navigate(-1)}
-        className="mb-8 text-sm text-gray-400 hover:text-cyan-400 flex items-center gap-2 transition-all duration-300 group"
+        className="mb-10 text-caption text-neutral-500 hover:text-neutral-300 flex items-center gap-2 transition-colors duration-200 group"
       >
-        <i className="fa-solid fa-arrow-left transition-transform duration-300 group-hover:-translate-x-1" aria-hidden="true" />
+        <i className="fa-solid fa-arrow-left text-xs transition-transform duration-200 group-hover:-translate-x-0.5" aria-hidden="true" />
         Back to Projects
       </button>
 
       {/* Header */}
       <motion.div
-        initial={{ opacity: 0, y: 20 }}
+        initial={{ opacity: 0, y: 12 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.4 }}
       >
-        <h1 className="text-3xl md:text-4xl font-bold text-cyan-200 mb-4">
+        <h1 className="text-display-sm md:text-display text-white mb-5">
           {project.title}
         </h1>
 
         {/* Tech stack tags */}
-        <div className="flex flex-wrap gap-2 mb-6">
+        <div className="flex flex-wrap gap-2 mb-5">
           {project.stack.map((tech) => (
-            <span
-              key={tech}
-              className="chip"
-            >
+            <span key={tech} className="chip">
               {tech}
             </span>
           ))}
@@ -81,7 +78,7 @@ export function ProjectDetails() {
           href={project.github}
           target="_blank"
           rel="noopener noreferrer"
-          className="inline-flex items-center gap-2 text-sm text-cyan-400 hover:text-cyan-300 transition-colors mb-8"
+          className="inline-flex items-center gap-2 text-caption text-neutral-500 hover:text-neutral-300 transition-colors mb-10"
         >
           <i className="fab fa-github" aria-hidden="true" />
           View Source Code
@@ -90,34 +87,34 @@ export function ProjectDetails() {
 
       {/* Project image */}
       <motion.div
-        initial={{ opacity: 0, y: 20 }}
+        initial={{ opacity: 0, y: 12 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.4, delay: 0.1 }}
-        className="mb-10"
+        className="mb-12"
       >
         <img
           src={project.image}
           alt={project.title}
-          className="w-full rounded-2xl border border-white/[0.06] shadow-glass"
+          className="w-full rounded-xl border border-surface-border"
           loading="lazy"
         />
       </motion.div>
 
       {/* Overview */}
       <motion.div
-        initial={{ opacity: 0, y: 20 }}
+        initial={{ opacity: 0, y: 12 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.4, delay: 0.15 }}
-        className="mb-10"
+        className="mb-12"
       >
         <SubHeading>Overview</SubHeading>
-        <p className="text-gray-300 leading-relaxed">{project.about}</p>
+        <p className="text-body text-neutral-400 leading-relaxed">{project.about}</p>
       </motion.div>
 
-      {/* Case study sections — render only if data exists */}
+      {/* Case study sections */}
       {hasCaseStudy && (
         <motion.div
-          initial={{ opacity: 0, y: 20 }}
+          initial={{ opacity: 0, y: 12 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.4, delay: 0.2 }}
         >
@@ -134,16 +131,16 @@ export function ProjectDetails() {
       {/* Results */}
       {project.results && project.results.length > 0 && (
         <motion.div
-          initial={{ opacity: 0, y: 20 }}
+          initial={{ opacity: 0, y: 12 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.4, delay: 0.25 }}
         >
           <SubHeading>Results &amp; Artifacts</SubHeading>
-          <div className="grid md:grid-cols-2 gap-6">
+          <div className="grid md:grid-cols-2 gap-5">
             {project.results.map((res, i) => (
               <div
                 key={i}
-                className="glass-card glass-shimmer rounded-xl p-4 cursor-pointer group"
+                className="card p-4 cursor-pointer group"
                 onClick={() => setModalImg(res.img)}
                 role="button"
                 tabIndex={0}
@@ -153,10 +150,10 @@ export function ProjectDetails() {
                 <img
                   src={res.img}
                   alt={res.caption}
-                  className="w-full rounded mb-2 transition-transform duration-200 group-hover:scale-[1.02]"
+                  className="w-full rounded mb-3 transition-opacity duration-200 group-hover:opacity-80"
                   loading="lazy"
                 />
-                <span className="text-sm text-gray-400">{res.caption}</span>
+                <span className="text-caption text-neutral-500">{res.caption}</span>
               </div>
             ))}
           </div>
@@ -166,7 +163,7 @@ export function ProjectDetails() {
       {/* Image modal */}
       {modalImg && (
         <div
-          className="fixed inset-0 z-50 flex items-center justify-center bg-black/80 backdrop-blur-md"
+          className="fixed inset-0 z-50 flex items-center justify-center bg-black/85 backdrop-blur-sm"
           onClick={() => setModalImg(null)}
           onKeyDown={(e) => e.key === 'Escape' && setModalImg(null)}
           role="dialog"
@@ -175,7 +172,7 @@ export function ProjectDetails() {
           <img
             src={modalImg}
             alt="Full screen view"
-            className="max-w-3xl max-h-[90vh] rounded-2xl shadow-2xl border border-white/[0.06]"
+            className="max-w-3xl max-h-[90vh] rounded-xl"
           />
         </div>
       )}

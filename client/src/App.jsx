@@ -39,11 +39,6 @@ function MainPage() {
 function App() {
   return (
     <Router>
-      {/* Layered depth background */}
-      <div className="bg-depth" aria-hidden="true" />
-      <div className="bg-orb bg-orb-1" aria-hidden="true" />
-      <div className="bg-orb bg-orb-2" aria-hidden="true" />
-
       <Navbar />
       <main className="pt-20 relative">
         <Routes>

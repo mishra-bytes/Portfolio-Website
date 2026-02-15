@@ -2,14 +2,11 @@ import React from 'react';
 
 export function Footer() {
   return (
-    <footer className="relative text-center py-12 text-sm">
-      <div className="section-divider mb-8" aria-hidden="true" />
-      <div className="text-gray-500">
-        <p>&copy; {new Date().getFullYear()} Aditya Mishra</p>
-        <p className="mt-1.5 text-xs text-gray-600">
-          Built with intention &amp; precision
-        </p>
-      </div>
+    <footer className="py-16 px-6 text-center">
+      <div className="section-divider max-w-5xl mx-auto mb-10" aria-hidden="true" />
+      <p className="text-micro text-neutral-600">
+        &copy; {new Date().getFullYear()} Aditya Mishra
+      </p>
     </footer>
   );
 }
